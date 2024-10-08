@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="CropBox.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:CropBox"
+    xmlns:shared="clr-namespace:CropBox.Views.Shared"
+    xmlns:technician="clr-namespace:CropBox.Views.Technician"
+    xmlns:owner="clr-namespace:CropBox.Views.Owner"
+    Shell.FlyoutBehavior="Disabled"
+    Shell.BackgroundColor="#92BA92"
+    Shell.TabBarBackgroundColor="#92BA92">
+
+    <ShellContent Route="Login" ContentTemplate="{DataTemplate shared:LoginPage}" />
+    
+    <TabBar Route="Owner" FlyoutDisplayOptions="AsMultipleItems">
+        <Tab Title="Data" Icon="charts.png">
+            <ShellContent ContentTemplate="{DataTemplate shared:DataPage}" Route="DataPage"/>
+        </Tab>
+        <Tab Title="Map" Icon="map.png">
+            <ShellContent ContentTemplate="{DataTemplate owner:MapPage}"/>
+        </Tab>
+        <Tab Title="Interaction" Icon="interaction.png">
+            <ShellContent ContentTemplate="{DataTemplate shared:InteractionPage}" Route="InteractionPage"/>
+        </Tab>
+        <Tab Title="Account" Icon="account.png">
+            <ShellContent ContentTemplate="{DataTemplate shared:LoginPage}" />
+        </Tab>
+    </TabBar>
+    <TabBar Route="Technician" FlyoutDisplayOptions="AsMultipleItems">
+        <Tab Title="Data" Icon="charts.png">
+            <ShellContent  ContentTemplate="{DataTemplate shared:DataPage}" Route="DataPage"/>
+        </Tab>
+        <Tab Title="Tresholds" Icon="tresholds.png">
+            <ShellContent  ContentTemplate="{DataTemplate technician:SetTresholdsPage}" />
+        </Tab>
+        <Tab Title="Interaction" Icon="interaction.png">
+            <ShellContent ContentTemplate="{DataTemplate shared:InteractionPage}" Route="InteractionPage"/>
+        </Tab>
+        <Tab Title="Account" Icon="account.png">
+            <ShellContent Title="Account" ContentTemplate="{DataTemplate shared:LoginPage}" Icon="account.png"/>
+        </Tab>
+    </TabBar>
+</Shell>

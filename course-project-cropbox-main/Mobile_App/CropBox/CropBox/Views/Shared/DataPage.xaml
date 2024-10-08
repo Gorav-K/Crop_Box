@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CropBox.Views.Shared.DataPage"
+             xmlns:charts="clr-namespace:LiveChartsCore.SkiaSharpView.Maui;assembly=LiveChartsCore.SkiaSharpView.Maui"
+             Title="DataPage"
+             Shell.NavBarIsVisible="False">
+    <VerticalStackLayout Spacing="10" Margin="10">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="400"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Picker x:Name="picker" Grid.ColumnSpan="2" FontAttributes="Bold" ItemsSource="{Binding Options}" SelectedIndex="0" BackgroundColor="{StaticResource Tertiary}" Grid.Row="4" Title="Select a Chart" SelectedIndexChanged="PickerItemChanged"/>
+
+            <Frame BorderColor="Black" Grid.Row="0" Grid.Column="0" x:Name="frmPitch">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.25*"/>
+                        <RowDefinition Height="0.25*"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" x:Name="lblFirst" FontAttributes="Bold" Text="Pitch" HorizontalOptions="Center"/>
+                    <Label Grid.Row="1" x:Name="lblFirstVal" FontAttributes="Bold" Text="defaultVal" HorizontalOptions="Center"/>
+                </Grid>
+            </Frame>
+            <Frame BorderColor="Black" Grid.Row="0" Grid.Column="1" x:Name="frmRoll">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.25*"/>
+                        <RowDefinition Height="0.25*"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" x:Name="lblSecond" FontAttributes="Bold" Text="Roll" HorizontalOptions="Center"/>
+                    <Label Grid.Row="1" x:Name="lblSecondVal" FontAttributes="Bold" Text="defaultVal" HorizontalOptions="Center"/>
+                </Grid>
+            </Frame>
+            <Frame BorderColor="Black" Grid.Row="1" Grid.Column="0" x:Name="frmVibration">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.25*"/>
+                        <RowDefinition Height="0.25*"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" x:Name="lblThird" FontAttributes="Bold" Text="Vibration" HorizontalOptions="Center"/>
+                    <Label Grid.Row="1" x:Name="lblThirdVal" FontAttributes="Bold" Text="defaultVal" HorizontalOptions="Center"/>
+                </Grid>
+            </Frame>
+            <Frame BorderColor="Black" Grid.Row="1" Grid.Column="1" x:Name="frmLuminosity   ">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.25*"/>
+                        <RowDefinition Height="0.25*"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" x:Name="lblFourth" FontAttributes="Bold" Text="Luminosity" HorizontalOptions="Center"/>
+                    <Label Grid.Row="1" x:Name="lblFourthVal" FontAttributes="Bold" Text="defaultVal" HorizontalOptions="Center"/>
+                </Grid>
+            </Frame>
+            <charts:PieChart Margin="0, 0, 0, 0 " Grid.Row="5" Grid.ColumnSpan="2" MaxAngle="270" InitialRotation="-225"  x:Name="chart" Series="{Binding Series}" TooltipTextSize="40"/>
+            <Grid Grid.Row="6" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="thresholdLabel" Grid.Column="0" FontSize="30" HorizontalTextAlignment="Center" >90.181</Label>
+            </Grid>
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>

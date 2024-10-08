@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CropBox.Views.Shared.LoginPage"
+             Title="Login Page">
+    <AbsoluteLayout>
+        <Label FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="{StaticResource Tertiary}" FontSize="48" AbsoluteLayout.LayoutBounds="0.5, 0.1, 0.9, 0.1" AbsoluteLayout.LayoutFlags="All" Text="CropBox"></Label>
+        <Grid x:Name="login_gridview"  AbsoluteLayout.LayoutBounds="0.5, 0.8, 0.8, 0.3" AbsoluteLayout.LayoutFlags="All">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50">
+                </RowDefinition>
+                <RowDefinition Height="50">
+                </RowDefinition>
+                <RowDefinition Height="50">
+                </RowDefinition>
+            </Grid.RowDefinitions>
+            <BoxView Margin="0, 100, 0, 0" CornerRadius="10" HeightRequest="200" Color="{StaticResource Secondary}"></BoxView>
+            <Entry PlaceholderColor="Black" FontAttributes="Bold" Grid.Row="0" x:Name="usernameInputed" Placeholder="Username" Text="test-user@owner.cropbox.com"></Entry>
+            <Entry PlaceholderColor="Black" FontAttributes="Bold" Grid.Row="1" x:Name="passwordInputed" IsPassword="True" Placeholder="Password" Text="123456"></Entry>
+            <ImageButton Grid.Row="2" Clicked="LoginButton_Clicked" Source="login_button.png"></ImageButton>
+        </Grid>
+        <Grid IsVisible="false" x:Name="logout_gridview"  AbsoluteLayout.LayoutBounds="0.5, 0.8, 0.8, 0.3" AbsoluteLayout.LayoutFlags="All">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30">
+                </RowDefinition>
+                <RowDefinition Height="30">
+                </RowDefinition>
+                <RowDefinition Height="30">
+                </RowDefinition>
+                <RowDefinition Height="30">
+                </RowDefinition>
+                <RowDefinition Height="50">
+                </RowDefinition>
+            </Grid.RowDefinitions>
+            <BoxView IsVisible="false" Margin="0, 175, 0, 0" CornerRadius="10" HeightRequest="200" Color="{StaticResource Secondary}"></BoxView>
+            <Label IsVisible="false"  Grid.Row="1" FontAttributes="Bold" Text="User Details:"></Label>
+            <Label IsVisible="false"  Grid.Row="2" x:Name="userID"></Label>
+            <Label IsVisible="false" Grid.Row="3" x:Name="userEmail"></Label>
+            <Button BackgroundColor="Black" Clicked="LogoutButton_Clicked" Grid.Row="4" Text="Log Out" WidthRequest="200"></Button>
+        </Grid>
+        <Label TextColor="Red" x:Name="loginMessage" Text="" HorizontalTextAlignment="Center" AbsoluteLayout.LayoutBounds="0, 0.825, 1, 0.1" AbsoluteLayout.LayoutFlags="All"></Label>
+    </AbsoluteLayout>
+</ContentPage>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:CropBox.Models"
+             x:Class="CropBox.Views.Shared.InteractionPage"
+             Title="Interaction Page"
+
+             xmlns:charts="clr-namespace:LiveChartsCore.SkiaSharpView.Maui;assembly=LiveChartsCore.SkiaSharpView.Maui">
+    <VerticalStackLayout>
+        <Picker x:Name="picker" FontAttributes="Bold" ItemsSource="{Binding Options}" SelectedIndex="0" 
+BackgroundColor="{StaticResource Tertiary}" Grid.Row="0" Title="Select a Chart" SelectedIndexChanged="PickerItemChanged"/>
+
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="450"></RowDefinition>
+                    <RowDefinition Height="3"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <!--<RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>-->
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <CollectionView x:Name="cvAlerts" Grid.Row="0" Grid.ColumnSpan="2">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Reading">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label  Grid.Column="0" Margin="10, 0, 00, 0"  Text="{Binding Type}"/>
+                                <Label Grid.Column="1" Text="{Binding FormattedReading}"/>
+                                <Label Grid.Column="2" Text="{Binding TimeStamp}"></Label>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <!-- https://stackoverflow.com/questions/64503289/update-livecharts-from-datatable-dynamically 
+                    look at this and use livecharts2
+                -->
+                <Line StrokeThickness="10" Grid.Row="1" Grid.ColumnSpan="2" BackgroundColor="Black"></Line>
+                <Grid Grid.Row="2" Grid.ColumnSpan="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="50"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="rgbLabel" VerticalOptions="Center" Grid.Row="2" Grid.Column="0" Text="RGBLed"/>
+                    <Picker x:Name="pickerRGBLED" Grid.Row="2" Grid.Column="1" SelectedIndexChanged="pickerRGBLED_SelectedIndexChanged" SelectedIndex="1"></Picker>
+                    <Button x:Name="btnRGBLED" Grid.Row="2" Grid.Column="2" Clicked="btnRGBLED_Clicked" Text="Blink Light"/>
+                    <Label VerticalOptions="Center" Grid.Row="0" Grid.Column="0" Text="Door Locked/Unlocked"/>
+                    <Switch Grid.Row="0" Grid.Column="2" x:Name="swtDoor" Toggled="swtDoor_Toggled"/>
+                    <Label VerticalOptions="Center" Grid.Row="1" Grid.Column="0" Text="Buzzer on/off"/>
+                    <Switch Grid.Row="1" Grid.Column="2" x:Name="swtBuzzer" Toggled="swtBuzzer_Toggled"/>
+                    <Label x:Name="fanLabel" VerticalOptions="Center" Grid.Row="3" Grid.Column="0" Text="Fan on/off"/>
+                    <Switch Grid.Row="3" Grid.Column="2" x:Name="swtFan" Toggled="swtFan_Toggled"/>
+                </Grid>
+            </Grid>
+        </ScrollView>
+
+    </VerticalStackLayout>
+</ContentPage>

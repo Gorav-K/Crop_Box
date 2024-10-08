@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CropBox.Views.Technician.SetTresholdsPage"
+             Title="SetTresholdsPage">
+
+    <Grid Margin="10" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="9*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" Text="Temperature" FontSize="Large" FontAttributes="Bold" VerticalTextAlignment="End" />
+        <Slider Grid.Row="1" Grid.Column="0" x:Name="temperature_slider" VerticalOptions="Center" Minimum="-15" Maximum="45" ValueChanged="temperature_slider_ValueChanged"/>
+        <Label Grid.Row="1" Grid.Column="1" VerticalOptions="Center" FontSize="Medium" x:Name="temperature_text"  Text="{Binding Source={x:Reference temperature_slider},Path=Value,
+                              StringFormat='{0:f0}'}"/>
+
+        <Label Grid.Row="2" Grid.Column="0" Text="Humidity" FontSize="Large" FontAttributes="Bold" VerticalTextAlignment="End" />
+        <Slider Grid.Row="3" Grid.Column="0" x:Name="humidity_slider" VerticalOptions="Center" Minimum="0" Maximum="50" ValueChanged="humidity_slider_ValueChanged" />
+        <Label Grid.Row="3" Grid.Column="1" VerticalOptions="Center" FontSize="Medium" x:Name="humidity_text"  Text="{Binding Source={x:Reference humidity_slider},Path=Value,
+                              StringFormat='{0:f0}'}"/>
+        <Label Grid.Row="4" Grid.Column="0" Text="Water" FontSize="Large" FontAttributes="Bold" VerticalTextAlignment="End" />
+        <Slider Grid.Row="5" Grid.Column="0" x:Name="water_slider" VerticalOptions="Center" Minimum="0" Maximum="950"  ValueChanged="water_slider_ValueChanged"/>
+        <Label Grid.Row="5" Grid.Column="1" VerticalOptions="Center" FontSize="Medium" x:Name="water_text"  Text="{Binding Source={x:Reference water_slider},Path=Value,
+                              StringFormat='{0:f0}'}"/>
+        <Label Grid.Row="6" Grid.Column="0" Text="Moisture" FontSize="Large" FontAttributes="Bold" VerticalTextAlignment="End" />
+        <Slider Grid.Row="7" Grid.Column="0" x:Name="moisture_slider" VerticalOptions="Center" Minimum="0" Maximum="900" ValueChanged="moisture_slider_ValueChanged" />
+        <Label Grid.Row="7" Grid.Column="1" VerticalOptions="Center" FontSize="Medium" x:Name="moisture_text"  Text="{Binding Source={x:Reference moisture_slider},Path=Value,
+                              StringFormat='{0:f0}'}"/>
+        <Label Grid.Row="8" Grid.Column="0" Text="Telemetry Interval" FontSize="Large" FontAttributes="Bold" VerticalTextAlignment="End" />
+        <Slider Grid.Row="9" Grid.Column="0" x:Name="telemetryInterval_slider" VerticalOptions="Center" Minimum="5" Maximum="60" ValueChanged="telemetryInterval_slider_ValueChanged" />
+        <Label Grid.Row="9" Grid.Column="1" VerticalOptions="Center" FontSize="Medium" x:Name="telemetryInterval_text"  Text="{Binding Source={x:Reference telemetryInterval_slider},Path=Value,
+                              StringFormat='{0:f0}'}"/>
+
+        <Button Grid.Row="10" Grid.ColumnSpan="2" Text="Update Thresholds" Clicked="Button_Clicked"/>
+    </Grid>
+</ContentPage>

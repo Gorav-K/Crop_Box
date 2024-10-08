@@ -1,0 +1,7 @@
+gpiozero==1.6.2
+grove.py==0.6
+pynmea2==1.19.0
+pyserial==3.5b0
+python-dotenv==1.0.0
+rpi_ws281x==4.3.4
+seeed_python_reterminal==0.5
